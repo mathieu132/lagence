@@ -3,14 +3,141 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        {% block stylesheets %}
+		<link rel="stylesheet" type="text/css" href="/style.css"> {% endblock %}
 
         
     </head>
     <body>
+        <header {% block bloc %}class="bloc"{% endblock %}>
+            <section class="image">
+                <div class="bloc1">
+                    <h1>L'Agence</h1>
+                </div>
+                <div class="bloc2">
+                    <a href="#" class="lien">Accueil</a>
+                </div>
+                <div class="bloc3">
+                    <a href="#" class="lien">Nos lieux</a>
+                </div>
+                <div class="bloc4">
+                    <a href="#" class="lien">Nos services</a>
+                </div>
+                <div class="bloc5">
+                    <a href="#" class="lien1">06 84 84 18 90</a>
+                </div>
+            </section>
+        </header>
+        
+        {% block body %}
+      
+            <section class="corps">
+                <div class="recherche">
+                    recherche
+                </div>
+            </section>
 
-        <h1>L'Agence</h1>
-        {% block body %}{% endblock %}
+            <main class="container">
+                <section class="corps1">
+                    <div class="">
+                        <h1>01.</h1>
+                        <h2>L'exclusivité</h2>
+                        <p>Une offre réservée à nos clients, les lieux les plus demandées, et compétitifs</p>
+                    </div>
+                    <div class="">
+                        <h1>02.</h1>
+                        <h2>L'accompagnement</h2>
+                        <p>Visite de plusieurs lieux, devis détaillés incluant toutes les idées que vous souhaiteriez.</p>
+                    </div>
+                    <div class="">
+                        <h1>03.</h1>
+                        <h2>L'approche Personalisé</h2>
+                        <p>Des lieux récents, avec beaucoup de fonctionnalité, un nouvelle façon de se réunir.</p>
+                    </div>
+                </section>
+
+                <section class="titre">
+                    <h1>Découvrez nos lieux</h1>
+                    <div class="flex">
+                        <div class="bloclieu1"><a href="#" id="mot"><img src="le-loft-de-menilmontant-anniversaire.jpg" class="imagelieux">
+                            <p id="mot">loft</p></a>
+                        </div>
+                        <div class="bloclieu2"><a href="#" id="mot"><img src="la-peniche-afterwork.jpg" class="imagelieux">
+                            <p id="mot">peniche</p></a>
+                            
+                        </div>
+                        <div class="bloclieu3"><a href="#" id="mot"><img src="le-generator-rooftop.jpg" class="imagelieux">
+                            <p id="mot">terrasse</p></a>
+                           
+                        </div>
+                        <div class="bloclieu4"><a href="#" id="mot"><img src="le-loft-du-11eme.jpg" class="imagelieux">
+                            <p id="mot">atypique</p></a>
+                            
+                        </div>
+                        <div class="bloclieu5">
+                            <a href="#" class="noslieux">TOUS NOS LIEUX</a>
+                        </div>
+                    </div>
+                </section>
+            </main>
+     
+        {% endblock %}
+
+        <footer>
+            <section class="footer1">
+                <div class="logofooter"><img src="/logoParisVert.png" class="logo">
+                </div>
+                <div class="faq">
+                    <ul>
+                        <li>
+                            <a href="#">FAQ</a>
+                        </li>
+                        <li>
+                            <a href="#">Qui sommes-nous ?</a>
+                        </li>
+                        <li>
+                           <a href="#">Assurance</a>
+                        </li>
+                        <li>
+                            <a href="#">Louer mon bien</a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <ul>
+                        <li>
+                            <a href="#">Événement Paris</a>
+                        </li>
+                        <li>
+                            <a href="#">Déposer votre brief</a>
+                        </li>
+                        <li>
+                            <a href="#">Nous contacter</a>
+                        </li>
+                        <li>
+                            <a href="#">Organiser un événement</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="contact">
+                    <a href="#"><img src="/twitter.png" class="reseau1"></a>
+                    <a href="#"><img src="/instagram.png" class="reseau"></a>
+                    <a href="#"><img src="/facebook-logo.png" class="reseau"></a>
+                </div>
+            </section>
+            <section class="footer2">
+                <div>
+                    2021 L'AGENCE
+                </div>
+                <div>
+                    <a href="#">Conditions générales de ventes</a>
+                </div>
+                <div>
+                    <a href="#">Politique de confidentialité et mentions légales</a>
+                </div>
+            <section>
+        </footer>
         {% block javascripts %}{% endblock %}
     </body>
 </html>
