@@ -15,20 +15,45 @@
                 <div class="bloc1">
                     <h1>L'Agence</h1>
                 </div>
-                <div class="bloc2">
-                    <a href="#" class="lien">Accueil</a>
-                </div>
-                <div class="bloc3">
-                    <a href="#" class="lien">Nos lieux</a>
-                </div>
-                <div class="bloc4">
-                    <a href="#" class="lien">Nos services</a>
-                </div>
-                <div class="bloc5">
-                    <a href="#" class="lien1">06 84 84 18 90</a>
-                </div>
+          
+
+                <nav>
+                    <ul>
+                        <li>
+                            <a href="{{ path("accueil") }}" class="lien">Accueil</a>
+                        </li>
+                        <li class="deroulant">
+                            <a href="#" class="lien">Lieux</a>
+                            <ul class="sous">
+                                <li>
+                                    <a href="{{ path("lieu") }}">Nos lieux</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path("lieu_ajouter") }}">Ajouter lieux</a>
+                                </li>
+                                <li>
+                                    <a href="#">CSS float</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="deroulant">
+                            <a href="#" class="lien">Nos services</a>
+                            <ul class="sous">
+                                <li><a href="#">CSS display</a></li>
+                                <li><a href="#">CSS position</a></li>
+                                <li><a href="#">CSS float</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" class="lien1">06 84 84 18 90</a>
+                        </li>
+                    </ul>
+                </nav>
             </section>
+
         </header>
+
+  
         
         {% block body %}
       

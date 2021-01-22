@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+
+
+{% block body %}
+
+<h1>Ajouter un lieu</h1>
+
+<form method="POST">
+    <div class="form-group">
+        <label for="adresse">Adresse</label>
+        <input type="text" name="adresse" id="adresse" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="prix">Prix</label>
+        <input type="text" name="prix" id="prix" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="surface">surface</label>
+        <input type="text" name="surface" id="surface" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="capacite">Capacité</label>
+        <input type="text" name="capacite" id="capacite" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="type">Type</label>
+        <select name="type" id="type" size="1">
+            <option>Type de lieux
+            <option value="loft">loft</option>
+            <option value="peniche">péniche</option>
+            <option value="terrasse">terrasse</option>
+            <option value="atypique">atypique</option>
+        </select>
+    </div>
+
+    <button>Enregistrer</button>
+
+{% endblock %}
