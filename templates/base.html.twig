@@ -34,8 +34,40 @@
       
             <section class="corps">
                 <div class="recherche">
-                    recherche
+                    <p>Choisissez votre lieu de réception à Paris</p>
+                    <FORM>
+                        <SELECT name="nom" size="1">
+                            <OPTION>Type de lieux
+                            <OPTION>loft
+                            <OPTION>péniche
+                            <OPTION>terrasse
+                            <OPTION>atypique
+                        </SELECT>
+                    
+                        <SELECT name="nom" size="1">
+                            <OPTION>Type d'événement
+                            <OPTION>Anniversaire
+                            <OPTION>Mariage
+                            <OPTION>Conférence
+                            <OPTION>Soirée d'entreprise
+                        </SELECT>
+                    
+                        <SELECT name="nom" size="1">
+                            <OPTION>Nombre de personne
+                            <OPTION>- de 50 personnes
+                            <OPTION>- de 100 personne
+                            <OPTION>- de 150 personnes
+                            <OPTION>+ de 200 personnes
+                        </SELECT>
+                        <input type="date" name="date" placeholder="choisir une date">
+                        <button class="btn btn-primary">Recherche</button>
+                    </FORM>
+
+                    <p>Ou faîtes-vous accompagner</p>
+                    <button class="btn btn-primary">Déposez votre brief</button>
+
                 </div>
+               
             </section>
 
             <main class="container">
@@ -80,6 +112,116 @@
                         </div>
                     </div>
                 </section>
+
+                <section class="num flex">
+                    <div >
+                        <h1>100</h1>
+                        <p>LIEUX D'EXCEPTIONS</p>
+                    </div>
+                    <div >
+                        <h1>300</h1>
+                        <p>IDÉES À LA MINUTE</p>
+                    </div>
+                    <div >
+                        <h1>1000</h1>
+                        <p>ÉVÉNEMENTS RÉALISÉS</p>
+                    </div>
+                    <div >
+                        <h1>5000</h1>
+                        <p>SOUVENIRS PARTAGÉS</p>
+                    </div>
+                </section>
+
+                  <section class="titre">
+                    <h1>Appréciez nos prestations</h1>
+                    <div class="flex">
+                        <div class="blocservice1"><img src="le-loft-de-menilmontant-anniversaire.jpg" class="imagelieux">
+                            <p id="mot">loft</p>
+                        </div>
+                        <div class="blocservice2">
+                            <h2>Photobooth</h2>
+                            <p>I am text block. Click edit button to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                            
+                        </div>
+                        <div class="blocservice3"><img src="le-generator-rooftop.jpg" class="imagelieux">
+                            <p id="mot">terrasse</p>
+                           
+                        </div>
+                        <div class="blocservice4">
+                            <h2>DJ</h2>
+                            <p>I am text block. Click edit button to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            
+                        </div>
+                        <div class="blocservice5"><img src="le-loft-du-11eme.jpg" class="imagelieux">
+                            <p id="mot">atypique</p>
+                            
+                            
+                        </div>
+                        <div class="blocservice6">
+                            <h2>Jeux</h2>
+                            <p>I am text block. Click edit button to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                            
+                        </div>
+                        <div class="blocservice7">
+                            <a href="#" class="nosservice">TOUS NOS SERVICES</a>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="titre">
+                    <h1>Savourer notre service traiteur</h1>
+                    <div class="flextraiteur">
+                        <div class="bloctraiteur1"><a href="#" id="mot"><img src="le-loft-de-menilmontant-anniversaire.jpg" class="imagelieux">
+                            <p id="mot">loft</p></a>
+                        </div>
+                        <div class="bloctraiteur2"><a href="#" id="mot"><img src="la-peniche-afterwork.jpg" class="imagelieux">
+                            <p id="mot">peniche</p></a>
+                            
+                        </div>
+                        <div class="bloctraiteur3"><a href="#" id="mot"><img src="le-generator-rooftop.jpg" class="imagelieux">
+                            <p id="mot">terrasse</p></a>
+                        </div>
+
+                            
+                        </div>
+                        <div class="bloctraiteur5">
+                            <a href="#" class="noslieux">TOUTES NOS FORMULES TRAITEURS</a>
+                        </div>
+                    </div>
+                </section>
+
+                 <section class="titre">
+                    <h1></h1>
+                    <div class="flextraiteur">
+                        <div class="bloctraiteur1"><a href="#" id="mot"><img src="le-loft-de-menilmontant-anniversaire.jpg" class="imagelieux">
+                           
+                        </div>
+                        <div class="bloctraiteur2"><a href="#" id="mot"><img src="la-peniche-afterwork.jpg" class="imagelieux">
+                            
+                            
+                        </div>
+                        <div class="bloctraiteur3"><a href="#" id="mot"><img src="le-generator-rooftop.jpg" class="imagelieux"></a>
+                        </div>
+                 
+                    </div>
+                </section>
+
+                 <section class="titre">
+                    <h1>Ils nous font confiance</h1>
+                    <div class="flextraiteur">
+                        <div class="blocavis1">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+
+                        <p>john Doe</p>
+                           
+                        </div>
+                        <div class="blocavis2">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+
+                        <p>valérie Doe</p>
+  
+                        </div>
+                 
+                    </div>
+        
             </main>
      
         {% endblock %}

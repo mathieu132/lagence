@@ -78,10 +78,26 @@ body{
 .recherche{
     background-color: #069;
     width: 80%;
-    height: 200px;
-    text-align: center;
+    height: 250px;
+    padding-left: 20px;
+    position: relative;
+    margin-top: -100px;
 }
-
+.recherche p{
+    color: white;
+}
+select{
+    height: 50px;
+    width: 240px;
+}
+input{
+    height: 46px;
+    width: 240px;
+}
+button{
+    height: 50px;
+    width: 240px;
+}
 .corps1{
     display: flex;
     justify-content: center; 
@@ -161,6 +177,126 @@ body{
     color: white;
     font-size: 50px;
 }
+
+/*-----------------------------numero----------------------------*/
+
+.num{
+    border-top: solid 1px;
+    margin-top: 40px;
+}
+
+
+/*------------------------------SERVICES--------------------------*/
+
+.blocservice1{
+    background-color: red;
+    width: 32%;
+    height: 300px;
+}
+.blocservice2{
+
+    width: 32%;
+    height: 300px;
+}
+.blocservice3{
+    background-color: blue;
+    width: 32%;
+    height: 300px;
+    margin-right: 20px;
+}
+.blocservice4{
+
+    width: 32%;
+    height: 300px;
+}
+.blocservice5{
+    background-color: green;
+    width: 32%;
+    height: 300px;
+}
+.blocservice6{
+
+    width: 32%;
+    height: 300px;
+}
+.blocservice7{
+    display: flex;
+    justify-content: flex-end; 
+    align-items: center;
+    background-color: green;
+    width: 100%;
+    height: 70px;
+    text-align: end;
+}
+.nosservice{
+    border: solid 1px;
+    padding: 10px 20px;
+    margin-right: 40px;
+    text-decoration: none;
+    color: white;
+    background:#069;
+}
+
+/*----------------------------- traiteur ------------------------*/
+.bloctraiteur1{
+    background-color: red;
+    width: 40%;
+    height: 300px;
+
+}
+.bloctraiteur2{
+    background-color: yellow;
+    width: 40%;
+    height: 300px;
+
+}
+.bloctraiteur3{
+    background-color: blue;
+    width: 40%;
+    height: 300px;
+
+}
+.bloctraiteur5{
+    display: flex;
+    justify-content: flex-end; 
+    align-items: center;
+    background-color: green;
+    width: 100;
+    height: 70px;
+    text-align: end;
+}
+.flextraiteur{
+    display: flex;
+    justify-content: center; 
+
+}
+
+
+/*----------------------------- avis ----------------------------*/
+
+
+.blocavis1{
+    background-color: #069;
+    border: solid 1px;
+    border-radius: 20px;
+    padding: 20px;
+    text-align: justify;
+    width: 40%;
+    margin: 20px;
+    margin-bottom: 50px;
+}
+.blocavis2{
+    background-color: #069;
+    border: solid 1px;
+    border-radius: 20px;
+    padding: 20px;
+    text-align: justify;
+    width: 40%;
+    margin: 20px;
+    margin-bottom: 50px;
+}
+
+
 
 
 /*--------------------------- FOOTER -----------------------------*/
