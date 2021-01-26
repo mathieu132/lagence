@@ -10,6 +10,7 @@ body{
     background: url("/le-generator-rooftop-entreprise.jpg")  center ;
 
 }
+
 .image {
     display: flex;
     background-color: rgba(0, 0, 0, 0.40);
@@ -77,13 +78,13 @@ nav ul::after{
 nav a{
     display: block;
     text-decoration: none;
-    color: black;
+    color: white;
     border-bottom: 2px solid transparent;
     padding: 10px 0px;
 }
 
 nav a:hover{
-    color: orange;
+    color: #069;
     border-bottom: 2px solid gold;
 }
 
@@ -106,6 +107,7 @@ nav > ul li:hover .sous{
 .sous a{
     padding: 10px;
     border-bottom: none;
+    color: black;
 }
 .sous a:hover{
     border-bottom: none;
@@ -353,13 +355,12 @@ button{
 
 
 /*--------------------------- FOOTER -----------------------------*/
-
-
 .footer1{
     background-color: rgb(53, 51, 51);
     width: 100%;
     height: 350px;
     display: flex;
+    margin-top: 30px;
 }
 .logofooter{
     justify-content: center; 
@@ -421,4 +422,11 @@ footer li a:hover{
 .footer2 div a:hover{
     text-decoration: underline;
     color: white;
+}
+
+
+/*--------------------------------- fiche -----------------------*/
+
+#titre h1{
+    background-color: green;
 }

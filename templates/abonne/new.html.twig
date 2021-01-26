@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Abonne{% endblock %}
+
+{% block body %}
+
+    <link rel="stylesheet" type="text/css" href="/stylenew.css">
+
+    <h1>Ajouter un nouvel abonné</h1>
+
+    <div>{{ include('abonne/_form.html.twig') }}</div>
+
+    <div class="abonne">
+    <a href="{{ path('abonne_index') }}" id="retournew">Retour à la liste</a></div>
+{% endblock %}

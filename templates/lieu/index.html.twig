@@ -4,30 +4,41 @@
 
 {% block body %}
 
+<link rel="stylesheet" type="text/css" href="/styleindex.css">
+
 <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
+                <th>Image</th>
+                <th>Nom du lieu</th>
                 <th>Adresse</th>
                 <th>Prix</th>
                 <th>Surface</th>
                 <th>Capacité</th>
                 <th>Type</th>
+                <th>Voir lieu</th>
+                <th>action</th>
             </tr>
         </thead>
         <tbody>
         {% for lieu in lieux %}
             <tr>
-                <td>{{ lieu.id }}</td>
+                <td>
+                    <img id="imageIndex" src="{{  "/img/" ~ lieu.image }}" alt="pas de couverture">
+                </td>
+                <td>{{ lieu.nomLieu }}</td>
                 <td>{{ lieu.adresse }}</td>
                 <td>{{ lieu.prix }}</td>
                 <td>{{ lieu.surface }}</td>
                 <td>{{ lieu.capacite }}</td>
                 <td>{{ lieu.type }}</td>
+                <td><a href="{{ path("lieu_fiche", {"id": lieu.id }) }}">Voir lieu</a></td>
+                {% if is_granted("ROLE_ADMIN") %}
                 <td>
-                    {# <a href="{{ path('lieu_show', {'id': lieu.id}) }}">Voir</a>
-                    <a href="{{ path('lieu_edit', {'id': lieu.id}) }}">Modifier</a> #}
+                    <a href="{{ path("lieu_modifier", {"id": lieu.id }) }}">Modifier</a>
+                    <a href="{{ path('lieu_supprimer', {'id': lieu.id}) }}">Supprimer</a>    
                 </td>
+                {% endif %}
             </tr>
         {% else %}
             <tr>

@@ -1,39 +1,55 @@
 {% extends 'base.html.twig' %}
 
+{% block h1 %}
+    {{ lieu is defined ? "Modifier le lieu n°" ~ lieu.id : "Ajouter un lieu"}}
+   
+{% endblock %}
 
-
-{% block body %}
+{# {% block body %}
 
 <h1>Ajouter un lieu</h1>
 
-<form method="POST">
+<form method="POST" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="nom_lieu">Nom du lieu</label>
+        <input type="text" name="nom_lieu" id="nom_lieu" class="form-control" value="{{ lieu is defined ? lieu.nom_lieu : "" }}">
+    </div>
     <div class="form-group">
         <label for="adresse">Adresse</label>
-        <input type="text" name="adresse" id="adresse" class="form-control">
+        <input type="text" name="adresse" id="adresse" class="form-control" value="{{ lieu is defined ? lieu.adresse : "" }}">
     </div>
     <div class="form-group">
         <label for="prix">Prix</label>
-        <input type="text" name="prix" id="prix" class="form-control">
+        <input type="text" name="prix" id="prix" class="form-control" value="{{ lieu is defined ? lieu.prix : "" }}">
     </div>
     <div class="form-group">
         <label for="surface">surface</label>
-        <input type="text" name="surface" id="surface" class="form-control">
+        <input type="text" name="surface" id="surface" class="form-control" value="{{ lieu is defined ? lieu.surface : "" }}">
     </div>
     <div class="form-group">
         <label for="capacite">Capacité</label>
-        <input type="text" name="capacite" id="capacite" class="form-control">
+        <input type="text" name="capacite" id="capacite" class="form-control" value="{{ lieu is defined ? lieu.capacite : "" }}">
     </div>
     <div class="form-group">
         <label for="type">Type</label>
         <select name="type" id="type" size="1">
             <option>Type de lieux
-            <option value="loft">loft</option>
-            <option value="peniche">péniche</option>
-            <option value="terrasse">terrasse</option>
-            <option value="atypique">atypique</option>
+            <option value="loft" {% if  lieu is defined ? lieu.type == "loft"  %} selected {% endif %}>loft</option>
+            <option value="peniche" {% if  lieu is defined ? lieu.type == "peniche"  %} selected {% endif %}>péniche</option>
+            <option value="terrasse" {% if  lieu is defined ? lieu.type == "terrasse"  %} selected {% endif %}>terrasse</option>
+            <option value="atypique" {% if  lieu is defined ? lieu.type == "atypique"  %} selected {% endif %}>atypique</option>
         </select>
     </div>
+    <div>
+	<div class="form-group">
+        <label for="photo">Photo</label>
+		<input type="file" name="photo" id="photo">
+	</div>
 
     <button>Enregistrer</button>
 
+{% endblock %} #}
+
+{% block body %}
+    {{ form(formLieu) }}
 {% endblock %}

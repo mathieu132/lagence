@@ -1,0 +1,42 @@
+
+form{
+    display: table-caption;
+    background-color: #069;
+    padding: 15px;
+    margin-left: 10px;
+}
+#abonne{
+    margin: 5px;
+}
+#abonne div{
+    margin: 10px;
+}
+#abonne input{
+    text-align: center;
+    height: 25px;
+}
+#abonne_roles{
+    display: flex;
+}
+#abonne_roles_0{
+    width: 50px;
+}
+#abonne_roles_1{
+    width: 50px;
+}
+form button{ 
+height: 40px;
+width: 200px;
+margin-left: 40px;
+}
+#retournew{
+    margin: 30px;
+    border: solid 3px green;
+    padding: 5px;
+    text-decoration: none;
+    color: black;
+    background: green;
+}
+.abonne {
+    margin: 10px;
+}

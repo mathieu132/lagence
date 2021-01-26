@@ -9,6 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Lieu;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\LieuRepository; 
+use App\Form\LieuType;
 
 class LieuController extends AbstractController
 {
@@ -27,36 +28,72 @@ class LieuController extends AbstractController
      * @Route("/lieu/ajouter", name="lieu_ajouter")
      */
     public function ajouter(Request $request, EntityManagerInterface $em){
-
-        if( $request->request->has("adresse")){
-            $adresse = $request->request->get("adresse");
-        }
-        if( $request->request->has("prix")){
-            $prix = $request->request->get("prix");
-        }
-        if( $request->request->has("surface")){
-            $surface = $request->request->get("surface");
-        }
-        if( $request->request->has("capacite")){
-            $capacite = $request->request->get("capacite");
-        }
-        if( $request->request->has("type")){
-            $type = $request->request->get("type");
-        }
-
-        if( !empty($adresse) && !empty($prix) && !empty($surface) && !empty($capacite) && !empty($type)) { 
-
-            $newLieu = new Lieu;
-            $newLieu->setAdresse($adresse);
-            $newLieu->setPrix($prix);
-            $newLieu->setSurface($surface);
-            $newLieu->setCapacite($capacite);
-            $newLieu->setType($type);
-
-            $em->persist($newLieu);
+        $Lieu = new Lieu; 
+        $formLieu = $this->createForm(LieuType::class, $Lieu);
+        $formLieu->handleRequest($request);
+        if( $formLieu->isSubmitted() && $formLieu->isValid() ){
+            if( $fichier = $formLieu->get("image")->getData() ){
+                $destination = $this->getParameter("dossier_image");
+                $nomFichier = pathinfo($fichier->getClientOriginalName(), PATHINFO_FILENAME);
+                $nouveauNom = str_replace(" ", "_", $nomFichier);
+                $nouveauNom .= "_" . uniqid() . "." . $fichier->guessExtension();
+                /* le fichier uploadé est enregistré dans un dossier temporaire. On va le 
+                    déplacer vers le dossier images avec le nouveau nom de fichier */
+                $fichier->move($destination, $nouveauNom);
+                $Lieu->setImage($nouveauNom);
+            }
+            $em->persist($Lieu);
             $em->flush();
+            $this->addFlash("success", "Le nouveau Lieu a bien été ajouté");
+            return $this->redirectToRoute("lieu");
         }
+        return $this->render("lieu/formulaire.html.twig", ["formLieu" => $formLieu->createView()]);
+    }
 
-        return $this->render("lieu/formulaire.html.twig");
+    /**
+     * @Route("/lieu/modifier/{id}", name="lieu_modifier")
+     */
+    public function modifier(Request $request, EntityManagerInterface $em, LieuRepository $lr, $id){
+        $Lieu = $lr->find($id);
+        $formLieu = $this->createForm(LieuType::class, $Lieu);
+        $formLieu->handleRequest($request);
+        if( $formLieu->isSubmitted() && $formLieu->isValid() ){
+            if( $fichier = $formLieu->get("image")->getData() ){
+                $destination = $this->getParameter("dossier_image");
+                $nomFichier = pathinfo($fichier->getClientOriginalName(), PATHINFO_FILENAME);
+                $nouveauNom = str_replace(" ", "_", $nomFichier);
+                $nouveauNom .= "_" . uniqid() . "." . $fichier->guessExtension();
+                $fichier->move($destination, $nouveauNom);
+                $Lieu->setImage($nouveauNom);
+            }
+            $em->persist($Lieu);
+            $em->flush();
+            $this->addFlash("success", "Le lieu a bien été modifié");
+            return $this->redirectToRoute("lieu");
+        }
+        return $this->render("lieu/formulaire.html.twig", ["formLieu" => $formLieu->createView()]);
+    }
+
+    /**
+     * @Route("/lieu/supprimer/{id}", name="lieu_supprimer")
+     */
+    public function supprimer(Request $request, LieuRepository $lieuRepository, EntityManagerInterface $em, $id){
+
+        $lieuSupprimer = $lieuRepository->find($id);
+        if( $request->isMethod("POST")){
+            $em->remove($lieuSupprimer);
+            $em->flush();
+            $this->addFlash("border:solid 3px green", "Le lieu n°$id a bien été supprimé");
+            return $this->redirectToRoute("lieu");
+        }
+        return $this->render("lieu/supprimer.html.twig", ["lieu" => $lieuSupprimer]);
+    }
+
+    /**
+     * @Route("/lieu/fiche/{id}", name="lieu_fiche")
+     */
+    public function fiche(LieuRepository $lieuRepository, $id){
+        $lieu = $lieuRepository->find($id);
+        return $this->render("lieu/fiche.html.twig", [ "lieu" => $lieu ]);
     }
 }

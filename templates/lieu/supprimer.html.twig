@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<h1>Confirmation de suppression</h1>
+
+    <h3>Etes-vous sûr(e) de vouloir supprimer le livre n°{{ lieu.id}}</h3>
+    <ul>
+        <li>Adresse : {{ lieu.adresse}}</li>
+        <li>Prix : {{ lieu.prix}}</li>
+        <li>Surface : {{ lieu.surface}}</li>
+        <li>Capacité : {{ lieu.capacite}}</li>
+        <li>Type : {{ lieu.type}}</li>
+    
+    <form method="POST">
+        <button type="submit" style="border: solid 3px green">Confirmer</button>
+        <a href="{{ path("lieu")}}" style="border: solid 3px red">Annuler</a>
+    </form>
+
+{% endblock %}
