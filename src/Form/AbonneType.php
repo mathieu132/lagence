@@ -41,6 +41,7 @@ class AbonneType extends AbstractType
             ->add('password', PasswordType::class, [
                 "label" => "Mot de passe*",
                 "required" => false,
+                "mapped" => false
                 
                 ])
             ->add('prenom', TextType::class, [
