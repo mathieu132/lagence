@@ -4,48 +4,35 @@
 
 {% block body %}
 
-<link rel="stylesheet" type="text/css" href="/styleindex.css">
 
-<table class="table">
-        <thead>
-            <tr>
-                <th>Image</th>
-                <th>Nom du lieu</th>
-                <th>Adresse</th>
-                <th>Prix</th>
-                <th>Surface</th>
-                <th>Capacité</th>
-                <th>Type</th>
-                <th>Voir lieu</th>
-                <th>action</th>
-            </tr>
-        </thead>
-        <tbody>
+<div class="card-columns col-10">
+
         {% for lieu in lieux %}
-            <tr>
-                <td>
-                    <img id="imageIndex" src="{{  "/img/" ~ lieu.image }}" alt="pas de couverture">
-                </td>
-                <td>{{ lieu.nomLieu }}</td>
-                <td>{{ lieu.adresse }}</td>
-                <td>{{ lieu.prix }}</td>
-                <td>{{ lieu.surface }}</td>
-                <td>{{ lieu.capacite }}</td>
-                <td>{{ lieu.type }}</td>
-                <td><a href="{{ path("lieu_fiche", {"id": lieu.id }) }}">Voir lieu</a></td>
-                {% if is_granted("ROLE_ADMIN") %}
-                <td>
-                    <a href="{{ path("lieu_modifier", {"id": lieu.id }) }}">Modifier</a>
-                    <a href="{{ path('lieu_supprimer', {'id': lieu.id}) }}">Supprimer</a>    
-                </td>
-                {% endif %}
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="7">no records found</td>
-            </tr>
+
+  
+
+        
+        <div class="card-group d-block ">
+            <div class="card" style="width: 30rem;">
+                    <img src="{{ "/img/" ~ lieu.image }}" class="card-img-top" alt="image">
+                <div class="card-body">
+                    <h5 class="card-title">{{ lieu.nomLieu }}</h5>
+                    <p class="card-text">• {{ lieu.adresse }}<br>•  Prix : {{ lieu.prix }} € <br>• {{ lieu.surface }} m2 <br>• {{ lieu.capacite }} personnes <br>• {{ lieu.type }}</p>
+                    <a href="#" class="btn btn-primary">+ Ajouter à ma sélection</a>
+                    {% if is_granted("ROLE_ADMIN") %}
+                    <a href="{{ path('lieu_modifier', {'id': lieu.id}) }}" class="btn btn-secondary">Modifier</a>
+                    <a href="{{ path('lieu_supprimer', {'id': lieu.id}) }}" class="btn btn-danger">Supprimer</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        
+            
         {% endfor %}
-        </tbody>
-    </table>
+</div>
+     
 
 {% endblock %}

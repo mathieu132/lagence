@@ -13,8 +13,8 @@
         <li>Type : {{ lieu.type}}</li>
     
     <form method="POST">
-        <button type="submit" style="border: solid 3px green">Confirmer</button>
-        <a href="{{ path("lieu")}}" style="border: solid 3px red">Annuler</a>
+        <button type="submit" class="btn btn-success">Confirmer</button>
+        <button class="btn btn-danger"><a href="{{ path("lieu")}}" style="color:white">Annuler</a></button>
     </form>
 
 {% endblock %}

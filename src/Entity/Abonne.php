@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\AbonneRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -45,6 +47,16 @@ class Abonne implements UserInterface
      * @ORM\Column(type="string", length=30, nullable=true)
      */
     private $nom;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Selection::class, mappedBy="abonne", orphanRemoval=true)
+     */
+    private $selections;
+
+    public function __construct()
+    {
+        $this->selections = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -151,15 +163,12 @@ class Abonne implements UserInterface
     public function rolesTexte(): string
     {
         $texte = "";
-            // foreach($this->getRoles() as $role){
-            foreach($this->roles as $roles){
-            /* CONDITION TERNAIRE : si $texte n'est pas vide alors je concatène ", " sinon je ne concatène rien
-               syntaxe : 
-                condition ? valeur_si_vraie : valeur_si_fausse
-            */
+  
+            foreach($this->roles as $role){
+         
             $texte .= $texte ? ", " : "";
 
-            switch ($roles) {
+            switch ($role) {
                 case "ROLE_ADMIN":
                     $texte .= "Directeur";
                 break;
@@ -173,5 +182,35 @@ class Abonne implements UserInterface
             }
         }
         return $texte;
+    }
+
+    /**
+     * @return Collection|Selection[]
+     */
+    public function getSelections(): Collection
+    {
+        return $this->selections;
+    }
+
+    public function addSelection(Selection $selection): self
+    {
+        if (!$this->selections->contains($selection)) {
+            $this->selections[] = $selection;
+            $selection->setAbonne($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSelection(Selection $selection): self
+    {
+        if ($this->selections->removeElement($selection)) {
+            // set the owning side to null (unless already changed)
+            if ($selection->getAbonne() === $this) {
+                $selection->setAbonne(null);
+            }
+        }
+
+        return $this;
     }
 }

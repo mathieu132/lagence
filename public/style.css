@@ -265,7 +265,7 @@ button{
     height: 300px;
 }
 .blocservice5{
-    background-color: green;
+    background-color: #069;
     width: 32%;
     height: 300px;
 }
@@ -278,7 +278,7 @@ button{
     display: flex;
     justify-content: flex-end; 
     align-items: center;
-    background-color: green;
+    background-color:#069;
     width: 100%;
     height: 70px;
     text-align: end;
@@ -315,7 +315,7 @@ button{
     display: flex;
     justify-content: flex-end; 
     align-items: center;
-    background-color: green;
+    background-color: #069;
     width: 100;
     height: 70px;
     text-align: end;

@@ -1,12 +1,13 @@
 
 form{
-    display: table-caption;
+    display: block;
     background-color: #069;
     padding: 15px;
     margin-left: 10px;
 }
 #abonne{
     margin: 5px;
+    display: table-caption;
 }
 #abonne div{
     margin: 10px;
@@ -38,5 +39,12 @@ margin-left: 40px;
     background: green;
 }
 .abonne {
+    margin: 10px;
+}
+#selection, #lieu{
+    display: table-caption;
+    margin: 10px;
+}
+#selection div, #lieu div{
     margin: 10px;
 }

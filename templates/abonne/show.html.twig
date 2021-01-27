@@ -17,7 +17,7 @@
             </tr>
             <tr>
                 <th>Roles</th>
-                <td>{{ abonne.roles ? abonne.roles|json_encode : '' }}</td>
+                <td>{{ abonne.rolesTexte}}</td>
             </tr>
             <tr>
                 <th>Prenom</th>
@@ -27,6 +27,23 @@
                 <th>Nom</th>
                 <td>{{ abonne.nom }}</td>
             </tr>
+        </tbody>
+    </table>
+
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+            <th>Lieu</th>
+            <th>Début le</th>
+            <th>Fin le</th>
+        </thead>
+        <tbody>
+            {% for selection in abonne.selections %}
+                <tr>
+                    <td>{{ selection.lieu.nomLieu ~ " - " ~ selection.lieu.prix }}</td>
+                    <td>{{ selection.dateDebut|date("d/m/Y") }}</td>
+                    <td>{{ selection.dateFin|date("d/m/Y") }}</td>
+                </tr>
+            {% endfor %}
         </tbody>
     </table>
 

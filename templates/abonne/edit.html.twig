@@ -3,7 +3,10 @@
 {% block title %}Edit Abonne{% endblock %}
 
 {% block body %}
-    <h1>Edit Abonne</h1>
+
+<link rel="stylesheet" type="text/css" href="/stylenew.css">
+
+    <h1>Modifier l'abonné {{ abonne.id }}</h1>
 
     {{ include('abonne/_form.html.twig', {'button_label': 'Modifier'}) }}
 

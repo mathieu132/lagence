@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\LieuRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -51,6 +53,16 @@ class Lieu
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $image;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Selection::class, mappedBy="lieu", orphanRemoval=true)
+     */
+    private $selections;
+
+    public function __construct()
+    {
+        $this->selections = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -137,6 +149,36 @@ class Lieu
     public function setImage(?string $image): self
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Selection[]
+     */
+    public function getSelections(): Collection
+    {
+        return $this->selections;
+    }
+
+    public function addSelection(Selection $selection): self
+    {
+        if (!$this->selections->contains($selection)) {
+            $this->selections[] = $selection;
+            $selection->setLieu($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSelection(Selection $selection): self
+    {
+        if ($this->selections->removeElement($selection)) {
+            // set the owning side to null (unless already changed)
+            if ($selection->getLieu() === $this) {
+                $selection->setLieu(null);
+            }
+        }
 
         return $this;
     }
