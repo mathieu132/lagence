@@ -63,12 +63,17 @@ class AbonneController extends AbstractController
     /**
      * @Route("/{id}/edit", name="abonne_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, Abonne $abonne): Response
+    public function edit(Request $request, Encoder $encoder, Abonne $abonne): Response
     {
         $form = $this->createForm(AbonneType::class, $abonne);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $mdp = $form->get("password")->getData();
+            if( trim($mdp)) {
+            $mdp = $encoder->encodePassword($abonne, $mdp);
+            $abonne->setPassword($mdp);
+            }
             $this->getDoctrine()->getManager()->flush();
             $this->addFlash("border:solid 3px green", "L'abonné a bien été modifié");
             return $this->redirectToRoute('abonne_index');
