@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\SelectionRepository;
+use App\Repository\LieuRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\Selection;
 use App\Form\SelectionType;
@@ -53,6 +54,23 @@ class SelectionController extends AbstractController
         $selectionAmodifier->setDateRetour(new \DateTime());
         $em->flush();
         $this->addFlash("info", "Le livre <strong>" . $selectionAmodifier->getLivre()->getTitre() . "</strong> selectioné par <i>" . $selectionAmodifier->getAbonne()->getPseudo() . "</i> a été rendu");
+        return $this->redirectToRoute("selection");
+    }
+
+    /**
+     * @Route("/selection/reserver/{id}", name="selection_reserver" )
+     */
+    public function reserver(LieuRepository $lr, EntityManagerinterface $em, $id){
+        
+        $lieu = $lr->find($id);
+        $abonne = $this->getUser();
+        
+        $selection = new Selection;
+        $selection->setLieu($lieu);
+        $selection->setAbonne($abonne);
+        $em->persist($selection);
+        $em->flush();
+        $this->addFlash("info", "Votre sélection " . $lieu->getNomLieu() . " a bien été pris on compte");
         return $this->redirectToRoute("selection");
     }
 }

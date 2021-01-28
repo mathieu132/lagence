@@ -7,6 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use App\Entity\Abonne, App\Entity\Lieu;
@@ -34,10 +35,12 @@ class SelectionType extends AbstractType
             ])
             ->add('abonne', EntityType::class, [
                 "class" => Abonne::class,
-                "choice_label" => "pseudo",
-                "label" => "Abonné",
+                "choice_label" => function (Abonne $abonne){
+                    return $abonne->getNom() . " - " . $abonne->getPrenom();
+                },
                 "placeholder" => "" 
             ])
+        
             ->add("enregistrer", SubmitType::class)
         ;
     }
