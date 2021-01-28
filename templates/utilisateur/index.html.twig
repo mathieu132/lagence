@@ -46,6 +46,10 @@
         <label for="prenom">prenom</label>
         <input type="text" name="prenom" id="prenom" class="form-control" value="{{ abonne is defined ? abonne.prenom : "" }}">
     </div>
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" class="form-control" value="{{ abonne is defined ? abonne.email : "" }}">
+    </div>
 
     <button class="btn btn-primary">Enregistrer</button>
 

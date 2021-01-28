@@ -53,6 +53,11 @@ class Abonne implements UserInterface
      */
     private $selections;
 
+    /**
+     * @ORM\Column(type="string", length=50, nullable=true)
+     */
+    private $email;
+
     public function __construct()
     {
         $this->selections = new ArrayCollection();
@@ -210,6 +215,18 @@ class Abonne implements UserInterface
                 $selection->setAbonne(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(?string $email): self
+    {
+        $this->email = $email;
 
         return $this;
     }
