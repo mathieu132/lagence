@@ -51,6 +51,9 @@ class AbonneType extends AbstractType
             ->add('nom', TextType::class, [
                 "required" => false
             ])
+            ->add('email', TextType::class, [
+                "label" => "Email",
+            ])
             ->add("cgu", CheckboxType::class, [
                 "label" => "J'accepte les Conditions Générales d'Utilisation",
                 "mapped" => false,

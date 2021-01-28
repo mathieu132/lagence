@@ -13,6 +13,7 @@
                 <th>Roles</th>
                 <th>Prenom</th>
                 <th>Nom</th>
+                <th>Email</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -24,6 +25,7 @@
                 <td>{{ abonne.rolesTexte}}</td>
                 <td>{{ abonne.prenom }}</td>
                 <td>{{ abonne.nom }}</td>
+                <td>{{ abonne.email }}</td>
                 <td>
                     <a href="{{ path('abonne_show', {'id': abonne.id}) }}">Voir</a>
                     <a href="{{ path('abonne_edit', {'id': abonne.id}) }}">Modifier</a>
