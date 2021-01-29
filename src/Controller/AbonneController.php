@@ -42,7 +42,7 @@ class AbonneController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($abonne);
             $entityManager->flush();
-            $this->addFlash("border:solid 3px green", "Le nouvel abonné a bien été enregistré");
+            $this->addFlash("success", "Le nouvel abonné a bien été enregistré");
             return $this->redirectToRoute('abonne_index');
         }
 
@@ -77,7 +77,7 @@ class AbonneController extends AbstractController
             $abonne->setPassword($mdp);
             }
             $this->getDoctrine()->getManager()->flush();
-            $this->addFlash("border:solid 3px green", "L'abonné a bien été modifié");
+            $this->addFlash("success", "L'abonné a bien été modifié");
             return $this->redirectToRoute('abonne_index');
         }
 
@@ -96,7 +96,7 @@ class AbonneController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($abonne);
             $entityManager->flush();
-            $this->addFlash("border:solid 3px green", "L'abonné n°$id a bien été supprimé");
+            $this->addFlash("success", "L'abonné n°$id a bien été supprimé");
         }
 
         return $this->redirectToRoute('abonne_index');

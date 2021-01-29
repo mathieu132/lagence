@@ -15,7 +15,11 @@
                 <div class="card-body">
                     <h5 class="card-title">{{ lieu.nomLieu }}</h5>
                     <p class="card-text">• {{ lieu.adresse }}<br>•  Prix : {{ lieu.prix }} € <br>• {{ lieu.surface }} m2 <br>• {{ lieu.capacite }} personnes <br>• {{ lieu.type }}</p>
+                    {% if is_granted("ROLE_USER") %}
                     <a href="{{ path('utilisateur_reserve', {'id': lieu.id}) }}" class="btn btn-primary">+ Ajouter à ma sélection</a>
+                    {% else %}
+                    <a href="{{ path('app_register') }}" class="btn btn-primary">+ Ajouter à ma sélection</a>
+                    {% endif %}
                     {% if is_granted("ROLE_ADMIN") %}
                     <a href="{{ path('lieu_modifier', {'id': lieu.id}) }}" class="btn btn-secondary">Modifier</a>
                     <a href="{{ path('lieu_supprimer', {'id': lieu.id}) }}" class="btn btn-danger">Supprimer</a>

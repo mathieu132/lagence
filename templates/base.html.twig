@@ -35,7 +35,7 @@
                                     <a href="{{ path("lieu_ajouter") }}">Ajouter lieux</a>
                                 </li>
                                 <li>
-                                    <a href="#">CSS float</a>
+                                    <a href="{{ path("photo_ajouter") }}">Ajouter photos</a>
                                 </li>
                             </ul>
                         </li>
@@ -45,6 +45,7 @@
                             <a href="{{ path("lieu") }}">Nos lieux</a>
                         </li>
                         {% endif %}
+                        {% if is_granted("ROLE_ADMIN") %}
                         <li class="deroulant">
                             <a href="{{ path("nos_services") }}" class="lien">Nos services</a>
                             <ul class="sous">
@@ -53,7 +54,7 @@
                                 <li><a href="#">CSS float</a></li>
                             </ul>
                         </li>
-
+                        
                         
                         <li class="deroulant">
                             <a href="#" class="lien">Gestions</a>
@@ -63,7 +64,7 @@
                                 <li><a href="">utilisateur</a></li>
                             </ul>
                         </li>
-                       
+                       {% endif %}
 
                         {% if is_granted("IS_AUTHENTICATED_FULLY") %}
                           <li>
@@ -156,23 +157,23 @@
                 <section class="titre">
                     <h1>Découvrez nos lieux</h1>
                     <div class="flex">
-                        <div class="bloclieu1"><a href="#" id="mot"><img src="le-loft-de-menilmontant-anniversaire.jpg" class="imagelieux">
+                        <div class="bloclieu1"><a href="{{ path("lieu") }}" id="mot"><img src="le-loft-de-menilmontant-anniversaire.jpg" class="imagelieux">
                             <p id="mot">loft</p></a>
                         </div>
-                        <div class="bloclieu2"><a href="#" id="mot"><img src="la-peniche-afterwork.jpg" class="imagelieux">
+                        <div class="bloclieu2"><a href="{{ path("lieu") }}" id="mot"><img src="la-peniche-afterwork.jpg" class="imagelieux">
                             <p id="mot">peniche</p></a>
                             
                         </div>
-                        <div class="bloclieu3"><a href="#" id="mot"><img src="le-generator-rooftop.jpg" class="imagelieux">
+                        <div class="bloclieu3"><a href="{{ path("lieu") }}" id="mot"><img src="le-generator-rooftop.jpg" class="imagelieux">
                             <p id="mot">terrasse</p></a>
                            
                         </div>
-                        <div class="bloclieu4"><a href="#" id="mot"><img src="le-loft-du-11eme.jpg" class="imagelieux">
+                        <div class="bloclieu4"><a href="{{ path("lieu") }}" id="mot"><img src="le-loft-du-11eme.jpg" class="imagelieux">
                             <p id="mot">atypique</p></a>
                             
                         </div>
                         <div class="bloclieu5">
-                            <a href="#" class="noslieux">TOUS NOS LIEUX</a>
+                            <a href="{{ path("lieu") }}" class="noslieux">TOUS NOS LIEUX</a>
                         </div>
                     </div>
                 </section>
@@ -227,7 +228,7 @@
                             
                         </div>
                         <div class="blocservice7">
-                            <a href="#" class="nosservice">TOUS NOS SERVICES</a>
+                            <a href="{{ path("nos_services") }}" class="nosservice">TOUS NOS SERVICES</a>
                         </div>
                     </div>
                 </section>

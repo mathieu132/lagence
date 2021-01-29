@@ -85,6 +85,11 @@ class LieuType extends AbstractType
                     ])
                 ]
             ])
+            ->add('lesphotos', FileType::class,[
+                'multiple' => true,
+                'mapped' => false,
+                'required' => false
+            ])
             ->add("enregistrer", SubmitType::class, [
                 "attr" => [ 
                     "class" => "btn btn-primary"

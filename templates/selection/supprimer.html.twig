@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    
+  <h1>Confirmation de suppression</h1>
+
+    <h3>Etes-vous sûr(e) de vouloir supprimer la selection n°{{ selection.id}}</h3>
+    <ul>
+        <li>Nom du lieu : {{ selection.lieu.nomLieu}}</li>
+        <li>Prix : {{ selection.lieu.prix}} €</li>
+        <li>Nom abonne : {{ selection.abonne.nom}}</li>
+        <li>Prénom abonne : {{ selection.abonne.prenom}}</li>
+        <li>Date : {{ selection.dateDebut|date("d/m/Y")}} au {{ selection.dateFin|date("d/m/Y")}}</li>
+    </ul>
+    
+    <form method="POST">
+        <button type="submit" class="btn btn-success">Confirmer</button>
+        <button class="btn btn-danger"><a href="{{ path("selection")}}" style="color:white">Annuler</a></button>
+    </form>
+
+{% endblock %}

@@ -59,7 +59,7 @@ class UtilisateurController extends AbstractController
             return $this->redirectToRoute("confirmation");
             }
             else{
-            $this->addFlash("info", "erreur");
+            $this->addFlash("info danger", "erreur");
             return $this->redirectToRoute("lieu");
             }
         }

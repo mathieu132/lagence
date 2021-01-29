@@ -45,32 +45,20 @@ class SelectionController extends AbstractController
         return $this->render("selection/ajouter.html.twig", [ "formSelection" => $formSelection->createView() ]);
     }
 
-    /**
-     * @Route("/selection/retour/{id}", name="selection_retour" )
+     /**
+     * @Route("/selection/supprimer/{id}", name="selection_delete")
      */
-    public function retour(SelectionRepository $er, EntityManagerInterface $em, $id)
-    {
-        $selectionAmodifier = $er->find($id);
-        $selectionAmodifier->setDateRetour(new \DateTime());
-        $em->flush();
-        $this->addFlash("info", "Le livre <strong>" . $selectionAmodifier->getLivre()->getTitre() . "</strong> selectioné par <i>" . $selectionAmodifier->getAbonne()->getPseudo() . "</i> a été rendu");
-        return $this->redirectToRoute("selection");
+    public function supprimer(Request $request, SelectionRepository $selectionRepository, EntityManagerInterface $em, $id){
+
+        $selectionSupprimer = $selectionRepository->find($id);
+        if( $request->isMethod("POST")){
+            $em->remove($selectionSupprimer);
+            $em->flush();
+            $this->addFlash("success", "La selection n°$id a bien été supprimé");
+            return $this->redirectToRoute("selection");
+        }
+        return $this->render("selection/supprimer.html.twig", ["selection" => $selectionSupprimer]);
     }
 
-    /**
-     * @Route("/selection/reserver/{id}", name="selection_reserver" )
-     */
-    public function reserver(LieuRepository $lr, EntityManagerinterface $em, $id){
-        
-        $lieu = $lr->find($id);
-        $abonne = $this->getUser();
-        
-        $selection = new Selection;
-        $selection->setLieu($lieu);
-        $selection->setAbonne($abonne);
-        $em->persist($selection);
-        $em->flush();
-        $this->addFlash("info", "Votre sélection " . $lieu->getNomLieu() . " a bien été pris on compte");
-        return $this->redirectToRoute("selection");
-    }
+ 
 }

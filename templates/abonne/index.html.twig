@@ -27,8 +27,8 @@
                 <td>{{ abonne.nom }}</td>
                 <td>{{ abonne.email }}</td>
                 <td>
-                    <a href="{{ path('abonne_show', {'id': abonne.id}) }}">Voir</a>
-                    <a href="{{ path('abonne_edit', {'id': abonne.id}) }}">Modifier</a>
+                    <a href="{{ path('abonne_show', {'id': abonne.id}) }}" class="btn btn-info">Voir</a>
+                    <a href="{{ path('abonne_edit', {'id': abonne.id}) }}" class="btn btn-secondary">Modifier</a>
                 </td>
             </tr>
         {% else %}
@@ -39,5 +39,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('abonne_new') }}">Ajouter un nouvel abonné</a>
+    <a href="{{ path('abonne_new') }}" class="btn btn-success">Ajouter un nouvel abonné</a>
 {% endblock %}
