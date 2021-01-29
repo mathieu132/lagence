@@ -4,9 +4,11 @@
 
 {% block body %}
 
-<form method="POST">
+<p class="h1 p-3 ml-4">Formulaire de devis</p>
 
-<p>Veuillez choisir les dates :</p>
+<form method="POST" class="form-group ml-5 col-4 bg-info">
+
+<p class="h3 pt-3">Veuillez choisir les dates :</p>
 <div class="form-group">
         <label for="date_debut">date debut</label>
         <input type="date" name="date_debut" id="date_debut" class="form-control">
@@ -17,7 +19,7 @@
         <input type="date" name="date_fin" id="date_fin" class="form-control">
     </div>
     
-    Le lieu choisi :
+    <p class="h4 font-italic">Le lieu choisi :</p>
     <div class="form-group">
         <input type="hidden" name="id" id="id" class="form-control" value="{{ lieu is defined ? lieu.id : "" }}">
     </div>
@@ -34,7 +36,7 @@
         <input disabled type="text" name="prix" id="prix" class="form-control" value="{{ lieu is defined ? lieu.prix : "" }}" placeholder="{{lieu.prix}}">
     </div>
 
-    Veuillez vérifier que les données sont correctes :
+    <p class="h5">Veuillez vérifier que les données sont correctes :</p>
     <div class="form-group">
         <input type="hidden" name="id" id="id" class="form-control" value="{{ lieu is defined ? abonne.id : "" }}">
     </div>
@@ -51,6 +53,8 @@
         <input type="email" name="email" id="email" class="form-control" value="{{ abonne is defined ? abonne.email : "" }}">
     </div>
 
-    <button class="btn btn-primary">Enregistrer</button>
+    <button class="btn btn-primary mb-4">Enregistrer</button>
+
+</form>
 
 {% endblock %}

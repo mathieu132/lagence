@@ -7,8 +7,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Lieu;
+use App\Entity\Photo;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\LieuRepository; 
+use App\Repository\PhotoRepository; 
 use App\Form\LieuType;
 
 class LieuController extends AbstractController
@@ -37,10 +39,25 @@ class LieuController extends AbstractController
                 $nomFichier = pathinfo($fichier->getClientOriginalName(), PATHINFO_FILENAME);
                 $nouveauNom = str_replace(" ", "_", $nomFichier);
                 $nouveauNom .= "_" . uniqid() . "." . $fichier->guessExtension();
-                /* le fichier uploadé est enregistré dans un dossier temporaire. On va le 
-                    déplacer vers le dossier images avec le nouveau nom de fichier */
                 $fichier->move($destination, $nouveauNom);
                 $Lieu->setImage($nouveauNom);
+            }
+            if( $doc = $formLieu->get("lesphotos")->getData() ){
+
+                foreach($doc as $docs){
+                
+                $destination = $this->getParameter("dossier_image");
+                $nomDoc = pathinfo($docs->getClientOriginalName(), PATHINFO_FILENAME);
+                $nouveauNom = str_replace(" ", "_", $nomDoc);
+                $nouveauNom .= "_" . uniqid() . "." . $docs->guessExtension();
+
+                $docs->move($destination, $nouveauNom);
+
+                $photo = new Photo;
+                $photo->setLesphotos($nouveauNom);
+                $Lieu->addPhotoss($photo);
+                
+                }
             }
             $em->persist($Lieu);
             $em->flush();
@@ -66,6 +83,23 @@ class LieuController extends AbstractController
                 $fichier->move($destination, $nouveauNom);
                 $Lieu->setImage($nouveauNom);
             }
+            if( $doc = $formLieu->get("lesphotos")->getData() ){
+
+                foreach($doc as $docs){
+                
+                $destination = $this->getParameter("dossier_image");
+                $nomDoc = pathinfo($docs->getClientOriginalName(), PATHINFO_FILENAME);
+                $nouveauNom = str_replace(" ", "_", $nomDoc);
+                $nouveauNom .= "_" . uniqid() . "." . $docs->guessExtension();
+
+                $docs->move($destination, $nouveauNom);
+
+                $photo = new Photo;
+                $photo->setLesphotos($nouveauNom);
+                $Lieu->addPhotoss($photo);
+                
+                }
+            }
             $em->persist($Lieu);
             $em->flush();
             $this->addFlash("success", "Le lieu a bien été modifié");
@@ -77,13 +111,17 @@ class LieuController extends AbstractController
     /**
      * @Route("/lieu/supprimer/{id}", name="lieu_supprimer")
      */
-    public function supprimer(Request $request, LieuRepository $lieuRepository, EntityManagerInterface $em, $id){
+    public function supprimer(Request $request, LieuRepository $lieuRepository,  EntityManagerInterface $em, $id ){
 
         $lieuSupprimer = $lieuRepository->find($id);
+        
+        
+        
         if( $request->isMethod("POST")){
+            
             $em->remove($lieuSupprimer);
             $em->flush();
-            $this->addFlash("border:solid 3px green", "Le lieu n°$id a bien été supprimé");
+            $this->addFlash("success", "Le lieu n°$id a bien été supprimé");
             return $this->redirectToRoute("lieu");
         }
         return $this->render("lieu/supprimer.html.twig", ["lieu" => $lieuSupprimer]);
@@ -92,8 +130,10 @@ class LieuController extends AbstractController
     /**
      * @Route("/lieu/fiche/{id}", name="lieu_fiche")
      */
-    public function fiche(LieuRepository $lieuRepository, $id){
+    public function fiche(LieuRepository $lieuRepository,PhotoRepository $photoRepository, $id){
         $lieu = $lieuRepository->find($id);
-        return $this->render("lieu/fiche.html.twig", [ "lieu" => $lieu ]);
+        $photo = $photoRepository->findAll();
+        
+        return $this->render("lieu/fiche.html.twig", [ "lieu" => $lieu, 'photos' => $photo, ]);
     }
 }

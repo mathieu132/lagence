@@ -12,19 +12,21 @@
             <th>Lieu</th>
             <th>Date début</th>
             <th>Date fin</th>
+            <th>supprimer</th>
         </thead>
         <tbody>
             {% for selection in selections %}
                 <tr>
-                    <td>{{ selection.abonne.pseudo }}</td>
+                    <td>{{ selection.abonne.id }} - {{ selection.abonne.pseudo }}</td>
                     <td>{{ selection.lieu.nomLieu ~ " - " ~ selection.lieu.prix ~ " € "}}</td>
                     <td>{{ selection.dateDebut|date("d/m/Y") }}</td>
                     <td>{{ selection.dateFin|date("d/m/Y") }}</td>
+                    <td><a href="{{ path('selection_delete', {'id': selection.id}) }}" class="btn btn-danger">supprimer</a></td>
                 </tr>
             {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path("selection_ajouter") }}">Ajouter une sélection</a>
+    <a href="{{ path("selection_ajouter") }}" class="btn btn-info">Ajouter une sélection</a>
 
 {% endblock %}

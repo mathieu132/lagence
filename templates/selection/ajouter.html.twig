@@ -11,15 +11,13 @@
    {# {{ form(formSelection) }} #}
 
     {{ form_start(formSelection) }}
-    <p>veuiller sélectionner les dates :</p>
+    
         {{ form_row(formSelection.date_debut) }}
         {{ form_row(formSelection.date_fin) }}<br>
-        <p>Lieu sélectionné</p>
+        
         {{ form_row(formSelection.lieu) }}<br>
-        <p>Vérifier que les infos sont correctes</p>
+        
         {{ form_row(formSelection.abonne) }}
       
-
-        
     {{ form_end(formSelection) }} 
 {% endblock %}

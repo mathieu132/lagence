@@ -59,9 +59,24 @@ class Lieu
      */
     private $selections;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $photos;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Photo::class, mappedBy="lieu", cascade={"remove","persist"})
+     */
+    private $photoss;
+
+   
+    
+
     public function __construct()
     {
         $this->selections = new ArrayCollection();
+        $this->photoss = new ArrayCollection();
+        
     }
 
     public function getId(): ?int
@@ -182,4 +197,48 @@ class Lieu
 
         return $this;
     }
+
+    public function getPhotos(): ?string
+    {
+        return $this->photos;
+    }
+
+    public function setPhotos(?string $photos): self
+    {
+        $this->photos = $photos;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Photo[]
+     */
+    public function getPhotoss(): Collection
+    {
+        return $this->photoss;
+    }
+
+    public function addPhotoss(Photo $photoss): self
+    {
+        if (!$this->photoss->contains($photoss)) {
+            $this->photoss[] = $photoss;
+            $photoss->setLieu($this);
+        }
+
+        return $this;
+    }
+
+    public function removePhotoss(Photo $photoss): self
+    {
+        if ($this->photoss->removeElement($photoss)) {
+            // set the owning side to null (unless already changed)
+            if ($photoss->getLieu() === $this) {
+                $photoss->setLieu(null);
+            }
+        }
+
+        return $this;
+    }
+
+   
 }

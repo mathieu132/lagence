@@ -30,11 +30,11 @@
 }
 
 #image1{
-	width: 600px;
-	height: 400px;
-	position: absolute;
-	top: 310px;
-	left: 950px;
+	width: 770px;
+    height: 500px;
+    position: absolute;
+    top: 200px;
+    left: 700px;
 }
 
 #donnee{
@@ -51,7 +51,7 @@
 }
 
 #donnee ul{
-	width: 300px;
+	width: 370px;
 }
 
 #texte{
