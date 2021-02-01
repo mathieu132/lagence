@@ -17,14 +17,16 @@
     <h1 id="titre">{{ lieu.type }}<h1>
     <h2 id="titre2">{{ lieu.nomLieu }}</h2>
     <p id="bullet">Vue exceptionnelle<br>Grande terrasse ouverte<br>Jusqu'à 6h​</p>
-    <img src="{{ "/img/" ~ lieu.image }}" alt="la péniche" id="image1"> {# <li class="list-group-item">
-            <strong>Couverture : </strong>
-            <img src="{{ asset("img/" ~ lieu.couverture) }}" alt="pas de couverture">
-        </li> #}
+    
+    
+    <img src="{{ "/img/" ~ lieu.image }}" alt="la péniche" id="image1"> 
+    
 </section>
 
-
+<a href="{{ path('app_register') }}" class="btn btn-primary ml-5 mt-5">+ Ajouter à ma sélection</a>
 <section id="donnee">
+
+
 
     <ul>
       <li>Contact
@@ -61,6 +63,8 @@
 
 
 </section>
+
+
 
 <section id="texte" >
 			<div>
