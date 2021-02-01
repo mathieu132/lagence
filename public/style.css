@@ -34,19 +34,19 @@ body{
     text-align: center;
 }
 .lien:hover{
-    color: #069;
+    color: #255A5F;
 }
 .lien1{ 
-    border: solid #069 0px;
+    border: solid #255A5F 0px;
     padding: 10px 20px;
 
     text-decoration: none;
     color: white;
-    background:#069;
+    background:#255A5F;
 }
 .lien1:hover{ 
     text-decoration: none;
-    color: #069;
+    color: #255A5F;
     background:white;
 }
 
@@ -84,7 +84,7 @@ nav a{
 }
 
 nav a:hover{
-    color: #069;
+    color: #255A5F;
     border-bottom: 2px solid gold;
 }
 
@@ -131,7 +131,7 @@ nav > ul li:hover .sous{
     align-items: center; 
 }
 .recherche{
-    background-color: #069;
+    background-color: #255A5F;
     width: 80%;
     height: 250px;
     padding-left: 20px;
@@ -204,7 +204,7 @@ button{
     display: flex;
     justify-content: flex-end; 
     align-items: center;
-    background-color: #069;
+    background-color: #255A5F;
     width: 81.25%;
     height: 70px;
     text-align: end;
@@ -214,8 +214,13 @@ button{
     padding: 10px 20px;
     margin-right: 40px;
     text-decoration: none;
-    color: white;
-    background:#069;
+    color: #DFC15E;
+    background:#255A5F;
+}
+.bloclieu5 a:hover {
+    color: #255A5F;
+    background: #ffffff;
+    text-decoration: none;
 }
 .imagelieux {
     display: flex;
@@ -265,7 +270,7 @@ button{
     height: 300px;
 }
 .blocservice5{
-    background-color: #069;
+    background-color: #255A5F;
     width: 32%;
     height: 300px;
 }
@@ -278,18 +283,23 @@ button{
     display: flex;
     justify-content: flex-end; 
     align-items: center;
-    background-color:#069;
+    background-color:#255A5F;
     width: 100%;
     height: 70px;
     text-align: end;
+}
+.blocservice7 a:hover{
+    color: #255A5F;
+    background: #ffffff;
+    text-decoration: none;
 }
 .nosservice{
     border: solid 1px;
     padding: 10px 20px;
     margin-right: 40px;
     text-decoration: none;
-    color: white;
-    background:#069;
+    color: #DFC15E;
+    background:#255A5F;
 }
 
 /*----------------------------- traiteur ------------------------*/
@@ -315,10 +325,15 @@ button{
     display: flex;
     justify-content: flex-end; 
     align-items: center;
-    background-color: #069;
+    background-color: #255A5F;
     width: 100;
     height: 70px;
     text-align: end;
+}
+.bloctraiteur5 a:hover{
+    color: #255A5F;
+    background: #ffffff;
+    text-decoration: none;
 }
 .flextraiteur{
     display: flex;
@@ -331,7 +346,7 @@ button{
 
 
 .blocavis1{
-    background-color: #069;
+    background-color: #255A5F;
     border: solid 1px;
     border-radius: 20px;
     padding: 20px;
@@ -339,9 +354,11 @@ button{
     width: 40%;
     margin: 20px;
     margin-bottom: 50px;
+    color: #ffff;
 }
 .blocavis2{
-    background-color: #069;
+    background-color: #255A5F;
+    color: #ffff;
     border: solid 1px;
     border-radius: 20px;
     padding: 20px;

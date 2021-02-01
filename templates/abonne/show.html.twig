@@ -39,7 +39,7 @@
         <tbody>
             {% for selection in abonne.selections %}
                 <tr>
-                    <td>{{ selection.lieu.nomLieu ~ " - " ~ selection.lieu.prix }}</td>
+                    <td>{{ selection.lieu.nomLieu ~ " - " ~ selection.lieu.prix }} €</td>
                     <td>{{ selection.dateDebut|date("d/m/Y") }}</td>
                     <td>{{ selection.dateFin|date("d/m/Y") }}</td>
                 </tr>
