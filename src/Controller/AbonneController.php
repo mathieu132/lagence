@@ -77,7 +77,7 @@ class AbonneController extends AbstractController
             $abonne->setPassword($mdp);
             }
             $this->getDoctrine()->getManager()->flush();
-            $this->addFlash("success", "L'abonné a bien été modifié");
+            $this->addFlash("success", "L'abonné n°$id a bien été modifié");
             return $this->redirectToRoute('abonne_index');
         }
 
