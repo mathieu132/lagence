@@ -102,7 +102,7 @@ class LieuController extends AbstractController
             }
             $em->persist($Lieu);
             $em->flush();
-            $this->addFlash("success", "Le lieu a bien été modifié");
+            $this->addFlash("success", "Le lieu  $Lieu a bien été modifié");
             return $this->redirectToRoute("lieu");
         }
         return $this->render("lieu/formulaire.html.twig", ["formLieu" => $formLieu->createView()]);
